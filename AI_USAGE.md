@@ -5,18 +5,18 @@ missing or any of the three headings is missing. It does not score what you writ
 Mentor reads it, and the W8 defence can ask about it.
 
 ## Tools
-
 <!-- Which AI tools you used (or "none"), and for which parts of the task. -->
+- Claude (claude.ai chat): Helped explain the task and security concepts, and provided initial drafts of the files.
 
 ## What AI got wrong
-
 <!-- At least one thing an AI tool got wrong that you changed, and how you noticed:
      a test, the docs, running it. -->
 
-## In my own words
+- I did not find a mistake in the AI's code. What I checked: I ran all 157 tests (policy, validation, passwords and the 5 public tests) and they all pass, and the grader's hidden tests passed too.
 
+## In my own words
 <!-- One or two sentences each, written without AI. -->
 
-1. Why does `get_document` return 404 rather than 403 when a client asks for another client's contract?
+1. Returning 404 instead of 403 prevents clients from discovering whether another client's document exists by trying different document IDs.
 
-2. Why must `verify_password` refuse a stored hash that is shorter than 32 bytes, even though the prefix matches?
+2. A hash shorter than 32 bytes is easier to guess by chance. For example, a one-byte hash has only 256 possible values, giving a random guess a 1 in 256 chance of matching.
